@@ -1,9 +1,53 @@
+import { Route, Routes } from "react-router-dom";
+import { Toaster } from "sonner";
+import User from "./pages/user/User";
+import AppDashboard from "./pages/app/AppDashboard";
+import Posts from "./pages/posts/Posts";
+import Recipes from "./pages/recipes/Recipes";
+import Products from "./pages/products/Products";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+
 export function App() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="font-medium">Hello World</div>
-    </div>
-  )
+    <>
+      <Toaster richColors position="top-center" />
+      <Routes>
+        <Route path="/" element={<User />} />
+        <Route
+          path="/app"
+          element={
+            <ProtectedRoute>
+              <AppDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/posts"
+          element={
+            <ProtectedRoute>
+              <Posts />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/recipes"
+          element={
+            <ProtectedRoute>
+              <Recipes />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/products"
+          element={
+            <ProtectedRoute>
+              <Products />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;
