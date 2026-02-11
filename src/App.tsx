@@ -6,10 +6,12 @@ import Posts from "./pages/posts/Posts";
 import Recipes from "./pages/recipes/Recipes";
 import Products from "./pages/products/Products";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import Header from "./components/ui/Header";
 
 export function App() {
   return (
     <>
+    <Header/>
       <Toaster richColors position="top-center" />
       <Routes>
         <Route path="/" element={<User />} />
